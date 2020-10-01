@@ -29,4 +29,9 @@ public class TarefaDAO {
         return new ArrayList<>(tarefas);
     }
 
+    public void remove(Tarefa tarefa) {
+        if(tarefa != null) {
+            tarefas.remove(tarefa);
+        }
+    }
 }
