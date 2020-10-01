@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -18,6 +19,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import br.ucsal.supermercadoapp.dao.TarefaDAO;
+import br.ucsal.supermercadoapp.model.Tarefa;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,6 +44,21 @@ public class MainActivity extends AppCompatActivity {
 
         listView.setAdapter(listAdapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Tarefa tarefa = (Tarefa) parent.getItemAtPosition(position);
+                editar(tarefa);
+                Log.i("Tarefa", "Posição " + position);
+            }
+        });
+
+    }
+
+    public void editar(Tarefa tarefa){
+        Intent intent = new Intent(MainActivity.this, TarefaActivity.class);
+        intent.putExtra("Tarefa", tarefa);
+        startActivity(intent);
     }
 
     public void click(View view){
