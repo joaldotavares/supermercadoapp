@@ -6,4 +6,27 @@
     android:layout_height="match_parent"
     tools:context="br.ucsal.supermercadoapp.MainActivity">
 
+    <ListView
+        android:id="@+id/lista"
+        android:layout_width="415dp"
+        android:layout_height="726dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-5dp"
+        tools:layout_editor_absoluteY="1dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fba"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_action_add"
+        tools:ignore="MissingConstraints,OnClick,VectorDrawableCompat"
+        android:onClick="click"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
