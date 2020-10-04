@@ -10,9 +10,10 @@
         android:id="@+id/lista"
         android:layout_width="415dp"
         android:layout_height="726dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-5dp"
-        tools:layout_editor_absoluteY="1dp" />
+        tools:layout_editor_absoluteX="-2dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fba"
@@ -28,5 +29,17 @@
         tools:ignore="MissingConstraints,OnClick,VectorDrawableCompat"
         android:onClick="click"
         />
+
+    <Button
+        android:id="@+id/calculoTotal"
+        android:layout_width="104dp"
+        android:layout_height="58dp"
+        android:text="Total"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toStartOf="@+id/lista"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.95" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
