@@ -3,11 +3,11 @@ package br.ucsal.supermercadoapp.model;
 import java.io.Serializable;
 import java.util.UUID;
 
-public class Tarefa implements Serializable {
+public class Tarefa implements Serializable, Comparable<Tarefa> {
 
     private Integer quantidade;
     private String produto;
-    private double valor;
+    private Double valor;
 
     private String id;
 
@@ -39,11 +39,11 @@ public class Tarefa implements Serializable {
         return produto;
     }
 
-    public void setValor(double valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 
-    public double getValor() {
+    public Double getValor() {
         return valor;
     }
 
@@ -53,5 +53,10 @@ public class Tarefa implements Serializable {
 
     public String getId() {
         return id;
+    }
+
+    @Override
+    public int compareTo(Tarefa tarefa) {
+        return produto.compareTo(tarefa.produto);
     }
 }
