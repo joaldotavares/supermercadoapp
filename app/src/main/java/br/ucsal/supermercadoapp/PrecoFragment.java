@@ -18,14 +18,14 @@ public class PrecoFragment extends Fragment {
     private ListView listView;
     private ArrayAdapter<Tarefa> listAdapter;
     private final TarefaDAO dao = new TarefaDAO();
-
+    private View view;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
        /* listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
         listView = listView.findViewById(R.id.lista);
         listView.setAdapter(listAdapter);*/
-        View view = inflater.inflate(R.layout.fragment_preco, container, false);
+        view = inflater.inflate(R.layout.fragment_preco, container, false);
 
         // Aqui você instancia sua ListView
         ListView list = (ListView) view.findViewById(R.id.lista);
@@ -36,6 +36,20 @@ public class PrecoFragment extends Fragment {
         list.setAdapter(listAdapter);
         return view;
         //return inflater.inflate(R.layout.fragment_preco, listView, false);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        ListView list = (ListView) view.findViewById(R.id.lista);
+        List<Tarefa> tarefas = dao.listarPorPreco(); // Obtenha sua lista de objetos aqui
+
+        // CarsAdapter carsAdapter = new carsAdapter(getActivity(), cars);
+        listAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, tarefas);
+        list.setAdapter(listAdapter);
+
+
     }
 
     public static PrecoFragment newInstance() {

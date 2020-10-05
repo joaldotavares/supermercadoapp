@@ -86,7 +86,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 alertDialog.show();
             }
         });
-
+        Fragment produtosFragment = ProdutoFragment.newInstance();
+        openFragment(produtosFragment);
     }
 
     @Override

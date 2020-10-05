@@ -18,12 +18,12 @@ public class ProdutoFragment extends Fragment {
     private ListView listView;
     private ArrayAdapter<Tarefa> listAdapter;
     private final TarefaDAO dao = new TarefaDAO();
-
+    private View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_preco, container, false);
+        view = inflater.inflate(R.layout.fragment_preco, container, false);
 
         // Aqui você instancia sua ListView
         ListView list = (ListView) view.findViewById(R.id.lista);
@@ -33,6 +33,20 @@ public class ProdutoFragment extends Fragment {
         listAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, tarefas);
         list.setAdapter(listAdapter);
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // Aqui você instancia sua ListView
+        ListView list = (ListView) view.findViewById(R.id.lista);
+        List<Tarefa> tarefas = dao.listarPorNome(); // Obtenha sua lista de objetos aqui
+
+        // CarsAdapter carsAdapter = new carsAdapter(getActivity(), cars);
+        listAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, tarefas);
+        list.setAdapter(listAdapter);
+
     }
 
     public static ProdutoFragment newInstance() {
