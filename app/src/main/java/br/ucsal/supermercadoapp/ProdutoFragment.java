@@ -1,9 +1,11 @@
 package br.ucsal.supermercadoapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -32,9 +34,20 @@ public class ProdutoFragment extends Fragment {
         // CarsAdapter carsAdapter = new carsAdapter(getActivity(), cars);
         listAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, tarefas);
         list.setAdapter(listAdapter);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Tarefa tarefa = (Tarefa) parent.getItemAtPosition(position);
+                editar(tarefa);
+            }
+        });
         return view;
     }
-
+    public void editar(Tarefa tarefa){
+        Intent intent = new Intent(getActivity(), TarefaActivity.class);
+        intent.putExtra("Tarefa", tarefa);
+        startActivity(intent);
+    }
     @Override
     public void onResume() {
         super.onResume();

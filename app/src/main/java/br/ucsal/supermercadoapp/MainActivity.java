@@ -44,9 +44,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         fba = findViewById(R.id.fba);
 
-       /* listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
+        listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
         listView = findViewById(R.id.lista);
-        listView.setAdapter(listAdapter);*/
+        listView.setAdapter(listAdapter);
 
         navigationView = (BottomNavigationView) findViewById(R.id.navigationView);
         navigationView.setOnNavigationItemSelectedListener(this);
