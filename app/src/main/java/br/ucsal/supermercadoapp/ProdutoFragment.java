@@ -43,6 +43,7 @@ public class ProdutoFragment extends Fragment {
         });
         return view;
     }
+
     public void editar(Tarefa tarefa){
         Intent intent = new Intent(getActivity(), TarefaActivity.class);
         intent.putExtra("Tarefa", tarefa);

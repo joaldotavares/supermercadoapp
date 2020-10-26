@@ -1,6 +1,7 @@
 package br.ucsal.supermercadoapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private ArrayAdapter<Tarefa> listAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_main);
         setTitle("Lista de compras");
@@ -93,16 +94,18 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        menu.add("Remover");
+        getMenuInflater().inflate(R.menu.activity_main_menu_context, menu);
     }
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
-        AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        Tarefa tarefa = (Tarefa) listAdapter.getItem(menuInfo.position);
-        dao.remove(tarefa);
-        listAdapter.remove(tarefa);
 
+        if(item.getItemId() == R.id.main_context_remove){
+            AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+            Tarefa tarefa = (Tarefa) listAdapter.getItem(menuInfo.position);
+            dao.remove(tarefa);
+            listAdapter.remove(tarefa);
+        }
         return super.onContextItemSelected(item);
     }
 
