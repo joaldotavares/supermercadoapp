@@ -1,17 +1,32 @@
 package br.ucsal.supermercadoapp.model;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
 import java.util.UUID;
 
-public class Tarefa implements Serializable, Comparable<Tarefa> {
+@Entity(tableName = "PRODUTOS")
+public class Produto implements Serializable, Comparable<Produto> {
+
+    @NonNull
+    @PrimaryKey
+    private String id;
 
     private Integer quantidade;
     private String produto;
     private Double valor;
 
-    private String id;
 
-    public Tarefa(Integer quantidade, String produto, double valor){
+
+    public Produto(){
+
+    }
+
+    @Ignore
+    public Produto(Integer quantidade, String produto, double valor){
         this.quantidade = quantidade;
         this.produto = produto;
         this.valor = valor;
@@ -56,7 +71,7 @@ public class Tarefa implements Serializable, Comparable<Tarefa> {
     }
 
     @Override
-    public int compareTo(Tarefa tarefa) {
-        return produto.compareTo(tarefa.produto);
+    public int compareTo(Produto p) {
+        return produto.compareTo(p.produto);
     }
 }

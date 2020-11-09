@@ -44,6 +44,9 @@
         android:onClick="click"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:itemBackground="@color/colorPrimary"
+        app:itemIconTint="#FFF"
+        app:itemTextColor="#FFF"
         app:menu="@menu/navigation"
         app:srcCompat="@drawable/ic_action_add"
         tools:ignore="MissingConstraints,OnClick,VectorDrawableCompat" />
@@ -67,6 +70,9 @@
         app:layout_constraintHorizontal_bias="0.08"
         app:layout_constraintStart_toStartOf="@+id/lista"
         app:layout_constraintTop_toTopOf="parent"
+        app:itemBackground="@color/colorPrimary"
+        app:itemIconTint="#FFF"
+        app:itemTextColor="#FFF"
         app:layout_constraintVertical_bias="0.95" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

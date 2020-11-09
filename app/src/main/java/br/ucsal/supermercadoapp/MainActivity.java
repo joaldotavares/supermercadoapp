@@ -24,18 +24,20 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import br.ucsal.supermercadoapp.dao.TarefaDAO;
-import br.ucsal.supermercadoapp.model.Tarefa;
+import br.ucsal.supermercadoapp.dao.ProdutoDAO;
+
+import br.ucsal.supermercadoapp.model.Produto;
+
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
 
-    private final TarefaDAO dao = new TarefaDAO();
-    private ListView listView;
+    private final ProdutoDAO dao = new ProdutoDAO();
+    //private ListView listView;
     private FloatingActionButton fba;
     private BottomNavigationView navigationView;
 
-    private ArrayAdapter<Tarefa> listAdapter;
+    private ArrayAdapter<Produto> listAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,21 +47,21 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         fba = findViewById(R.id.fba);
 
-        listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
+     /*   listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
         listView = findViewById(R.id.lista);
-        listView.setAdapter(listAdapter);
+        listView.setAdapter(listAdapter);*/
 
         navigationView = (BottomNavigationView) findViewById(R.id.navigationView);
         navigationView.setOnNavigationItemSelectedListener(this);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      /*  listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Tarefa tarefa = (Tarefa) parent.getItemAtPosition(position);
                 editar(tarefa);
             }
-        });
-        registerForContextMenu(listView);
+        });*/
+        //registerForContextMenu(listView);
 
         Button calculoTotal = findViewById(R.id.calculoTotal);
         calculoTotal.setOnClickListener(new View.OnClickListener() {
@@ -102,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         if(item.getItemId() == R.id.main_context_remove){
             AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-            Tarefa tarefa = (Tarefa) listAdapter.getItem(menuInfo.position);
+            Produto tarefa = (Produto) listAdapter.getItem(menuInfo.position);
             dao.remove(tarefa);
             listAdapter.remove(tarefa);
         }
@@ -114,18 +116,17 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onResume();
         Fragment produtosFragment = ProdutoFragment.newInstance();
         openFragment(produtosFragment);
-        //listAdapter.clear();
-        //listAdapter.addAll(dao.lista());
+
     }
 
-    public void editar(Tarefa tarefa){
-        Intent intent = new Intent(MainActivity.this, TarefaActivity.class);
+    public void editar(Produto tarefa){
+        Intent intent = new Intent(MainActivity.this, ProdutoActivity.class);
         intent.putExtra("Tarefa", tarefa);
         startActivity(intent);
     }
 
     public void click(View view){
-        Intent intent = new Intent(this, TarefaActivity.class);
+        Intent intent = new Intent(this, ProdutoFragment.class);
         startActivity(intent);
     }
 
@@ -133,13 +134,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.navigation_nome: {
-                getSupportActionBar().setTitle("Nome");
+                getSupportActionBar().setTitle("Lista de compras");
                 Fragment produtosFragment = ProdutoFragment.newInstance();
                 openFragment(produtosFragment);
                 break;
             }
             case R.id.navigation_preco: {
-                getSupportActionBar().setTitle("Preço");
+                getSupportActionBar().setTitle("Lista de compras");
                 Fragment produtosFragment = PrecoFragment.newInstance();
                 openFragment(produtosFragment);
                 break;

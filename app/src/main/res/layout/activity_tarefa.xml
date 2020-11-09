@@ -24,17 +24,30 @@
 
     <Button
         android:id="@+id/tarefa_activity_adicionar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="128dp"
-        android:layout_marginEnd="128dp"
+        android:layout_width="191dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="28dp"
         android:onClick="salvar"
         android:text="@string/bt_salvar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.446"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tarefa_activity_produto"
-        app:layout_constraintVertical_bias="0.16000003" />
+        app:layout_constraintVertical_bias="0.115" />
+
+    <Button
+        android:id="@+id/tarefa_activity_remover"
+        android:layout_width="191dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="108dp"
+        android:onClick="remover"
+        android:text="Remover"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tarefa_activity_produto"
+        app:layout_constraintVertical_bias="0.124" />
 
     <EditText
         android:id="@+id/tarefa_activity_quantidade"
@@ -61,5 +74,7 @@
         app:layout_constraintStart_toEndOf="@+id/tarefa_activity_produto"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.13999999" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
