@@ -13,8 +13,8 @@ public class SupermercadoApplication extends Application {
     public void onCreate() {
         super.onCreate();
         BdRoom bdRoom = Room.databaseBuilder(this,BdRoom.class, "supermercado.db").build();
-        Produto p = new Produto(5, "Produto 1", 5.9);
-        p.setId("3");
+        Produto p = new Produto(2, "Produto 2", 4.9);
+        //p.setId("4");
         //BdRoom.getInstance(this).getProdutoRoomDAO().adicionar(p);
 
     }

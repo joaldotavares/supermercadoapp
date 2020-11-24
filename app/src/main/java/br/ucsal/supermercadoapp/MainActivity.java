@@ -57,8 +57,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
       /*  listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Tarefa tarefa = (Tarefa) parent.getItemAtPosition(position);
-                editar(tarefa);
+                Tarefa produto = (Tarefa) parent.getItemAtPosition(position);
+                editar(produto);
             }
         });*/
         //registerForContextMenu(listView);
@@ -99,17 +99,17 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         getMenuInflater().inflate(R.menu.activity_main_menu_context, menu);
     }
 
-    @Override
+   /* @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
 
         if(item.getItemId() == R.id.main_context_remove){
             AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-            Produto tarefa = (Produto) listAdapter.getItem(menuInfo.position);
-            dao.remove(tarefa);
-            listAdapter.remove(tarefa);
+            Produto produto = (Produto) listAdapter.getItem(menuInfo.position);
+            dao.remove(produto);
+            listAdapter.remove(produto);
         }
         return super.onContextItemSelected(item);
-    }
+    }*/
 
     @Override
     protected void onResume() {
@@ -119,14 +119,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     }
 
-    public void editar(Produto tarefa){
+    public void editar(Produto produto){
         Intent intent = new Intent(MainActivity.this, ProdutoActivity.class);
-        intent.putExtra("Tarefa", tarefa);
+        intent.putExtra("Tarefa", produto);
         startActivity(intent);
     }
 
     public void click(View view){
-        Intent intent = new Intent(this, ProdutoFragment.class);
+        Intent intent = new Intent(this, ProdutoActivity.class);
         startActivity(intent);
     }
 

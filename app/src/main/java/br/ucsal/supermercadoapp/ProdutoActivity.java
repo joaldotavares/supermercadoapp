@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.UUID;
+
 import br.ucsal.supermercadoapp.dao.BdRoom;
 import br.ucsal.supermercadoapp.dao.ProdutoDAO;
 import br.ucsal.supermercadoapp.model.Produto;
@@ -20,7 +22,7 @@ public class ProdutoActivity extends AppCompatActivity {
     private EditText produto;
     private EditText valor;
     private final ProdutoDAO dao = new ProdutoDAO();
-    private Produto tarefa;
+    private Produto produto2;
     private Button btnRemover;
     boolean show;
 
@@ -35,14 +37,14 @@ public class ProdutoActivity extends AppCompatActivity {
         btnRemover = findViewById(R.id.tarefa_activity_remover);
 
 
-        tarefa = (Produto) getIntent().getSerializableExtra("Tarefa");
+        produto2 = (Produto) getIntent().getSerializableExtra("Tarefa");
         if(getIntent().hasExtra("Tarefa")) {
             setTitle("Editar produto");
 
             //Log.i("Tarefa", tarefa.toString());
-            quantidade.setText(tarefa.getQuantidade() +"");
-            produto.setText(tarefa.getProduto());
-            valor.setText(tarefa.getValor() + "");
+            quantidade.setText(produto2.getQuantidade() +"");
+            produto.setText(produto2.getProduto());
+            valor.setText(produto2.getValor() + "");
             btnRemover.setVisibility(View.VISIBLE);
             show = true;
         }else{
@@ -68,23 +70,26 @@ public class ProdutoActivity extends AppCompatActivity {
     }
 
     public void salvar(View view){
-        if(tarefa == null) {
-            tarefa = new Produto(Integer.parseInt(quantidade.getText().toString()), produto.getText().toString(), Double.parseDouble(valor.getText().toString()));
-            BdRoom.getInstance(this).getProdutoRoomDAO().adicionar(tarefa);
-            //Log.i("Tarefa", tarefa.toString());
+        if(produto2 == null) {
+            produto2 = new Produto(Integer.parseInt(quantidade.getText().toString()), produto.getText().toString(), Double.parseDouble(valor.getText().toString()));
+            produto2.setId(UUID.randomUUID().toString());
+            Log.i("Tarefa", produto2.toString());
+            BdRoom.getInstance(this).getProdutoRoomDAO().adicionar(produto2);
+
         }else{
-            tarefa.setQuantidade(Integer.parseInt(quantidade.getText().toString()));
-            tarefa.setProduto(produto.getText().toString());
-            tarefa.setValor(Double.parseDouble(valor.getText().toString()));
+            produto2.setQuantidade(Integer.parseInt(quantidade.getText().toString()));
+            produto2.setProduto(produto.getText().toString());
+            produto2.setValor(Double.parseDouble(valor.getText().toString()));
+            BdRoom.getInstance(this).getProdutoRoomDAO().editar(produto2);
         }
         //dao.adicionar(tarefa);
-        BdRoom.getInstance(this).getProdutoRoomDAO().adicionar(tarefa);
+        //BdRoom.getInstance(this).getProdutoRoomDAO().adicionar(produto2);
         finish();
     }
 
     public void remover(View view){
         //dao.remove(tarefa);
-        BdRoom.getInstance(this).getProdutoRoomDAO().remove(tarefa);
+        BdRoom.getInstance(this).getProdutoRoomDAO().remove(produto2);
         finish();
     }
 }

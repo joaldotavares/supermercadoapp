@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -13,17 +14,22 @@ import br.ucsal.supermercadoapp.model.Produto;
 public interface ProdutoRoomDAO {
 
     @Insert
-    public void adicionar(Produto tarefa);
+    public void adicionar(Produto produto);
 
     @Query("SELECT * FROM PRODUTOS")
     public List<Produto> lista();
 
     //public List<Produto> listarPorNome();
 
-    //public List<Produto> listarPorPreco();
+    @Query("SELECT * FROM PRODUTOS ORDER BY VALOR")
+    public List<Produto> listarPorPreco();
 
     @Delete
-    public void remove(Produto tarefa);
+    public void remove(Produto produto);
+
+
+    @Update
+    public void editar(Produto produto);
 
 
 //    public Double somaTotalItens();

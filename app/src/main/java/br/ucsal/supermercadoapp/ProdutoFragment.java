@@ -39,11 +39,7 @@ public class ProdutoFragment extends Fragment  {
         view = inflater.inflate(R.layout.fragment_preco, container, false);
 
         list =  view.findViewById(R.id.lista);
-        //List<Produto> tarefas = dao.listarPorNome(); // Obtenha sua lista de objetos aqui
         baseAdapter = new ProdutoAdapter(getActivity());
-        // CarsAdapter carsAdapter = new carsAdapter(getActivity(), cars);
-        //listAdapter = new ArrayAdapter<>(getActivity(), R.layout.produto_list_item, tarefas);
-        //list.setAdapter(listAdapter);
         list.setAdapter(baseAdapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -78,9 +74,6 @@ public class ProdutoFragment extends Fragment  {
         list.setAdapter(listAdapter);
 
     }
-
-
-
 
 
     public static ProdutoFragment newInstance() {

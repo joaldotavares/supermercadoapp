@@ -30,25 +30,25 @@ public class PrecoFragment extends Fragment {
          view = inflater.inflate(R.layout.fragment_preco, container, false);
 
          ListView list = (ListView) view.findViewById(R.id.lista);
-        //List<Produto> tarefas = dao.listarPorPreco(); // Obtenha sua lista de objetos aqui
-        List<Produto> tarefas = BdRoom.getInstance(getContext()).getProdutoRoomDAO().lista();
-        listAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, tarefas);
+        //List<Produto> produtos = dao.listarPorPreco(); // Obtenha sua lista de objetos aqui
+        List<Produto> produtos = BdRoom.getInstance(getContext()).getProdutoRoomDAO().listarPorPreco();
+        listAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, produtos);
         list.setAdapter(listAdapter);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Produto tarefa = (Produto) parent.getItemAtPosition(position);
-                editar(tarefa);
+                Produto produto = (Produto) parent.getItemAtPosition(position);
+                editar(produto);
             }
         });
 
         return view;
     }
 
-    public void editar(Produto tarefa){
+    public void editar(Produto produto){
         Intent intent = new Intent(getActivity(), ProdutoActivity.class);
-        intent.putExtra("Tarefa", tarefa);
+        intent.putExtra("Tarefa", produto);
         startActivity(intent);
     }
 
@@ -59,9 +59,9 @@ public class PrecoFragment extends Fragment {
         super.onResume();
 
         ListView list = (ListView) view.findViewById(R.id.lista);
-        List<Produto> tarefas = BdRoom.getInstance(getContext()).getProdutoRoomDAO().lista();
+        List<Produto> produtos = BdRoom.getInstance(getContext()).getProdutoRoomDAO().lista();
 
-        listAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, tarefas);
+        listAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, produtos);
         list.setAdapter(listAdapter);
 
 

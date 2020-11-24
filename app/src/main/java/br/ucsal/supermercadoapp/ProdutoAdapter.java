@@ -42,8 +42,10 @@ public class ProdutoAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup parent) {
+    public View getView(int i, View convertView, ViewGroup parent) {
         View nova = LayoutInflater.from(context).inflate(R.layout.produto_list_item,parent, false);
+
+
         Produto p = Room.databaseBuilder(context,BdRoom.class, "supermercado.db").build().getProdutoRoomDAO().lista().get(i);
         TextView quant = nova.findViewById(R.id.item_quantidade);
         quant.setText(p.getQuantidade());
