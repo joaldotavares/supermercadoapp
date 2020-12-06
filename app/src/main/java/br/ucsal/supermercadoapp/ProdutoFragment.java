@@ -36,9 +36,9 @@ public class ProdutoFragment extends Fragment  {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        view = inflater.inflate(R.layout.fragment_preco, container, false);
-
+        view = inflater.inflate(R.layout.fragment_nome, container, false);
         list =  view.findViewById(R.id.lista);
+
         baseAdapter = new ProdutoAdapter(getActivity());
         list.setAdapter(baseAdapter);
 
@@ -51,6 +51,7 @@ public class ProdutoFragment extends Fragment  {
             }
         });
         registerForContextMenu(list);
+
         return view;
     }
 
@@ -58,6 +59,12 @@ public class ProdutoFragment extends Fragment  {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         //getMenuInflater().inflate(R.menu.activity_main_menu_context, menu);
+    }
+
+    private void populateList() {
+        ListView saveListView = (ListView)getActivity().findViewById(R.id.lista);
+        baseAdapter = new ProdutoAdapter(getContext());
+        saveListView.setAdapter(baseAdapter);
     }
 
     public void editar(Produto tarefa){
