@@ -41,6 +41,8 @@ public class ProdutoFragment extends Fragment  {
         list =  view.findViewById(R.id.lista);
         baseAdapter = new ProdutoAdapter(getActivity());
         list.setAdapter(baseAdapter);
+
+
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

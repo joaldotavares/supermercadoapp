@@ -19,7 +19,8 @@ public interface ProdutoRoomDAO {
     @Query("SELECT * FROM PRODUTOS")
     public List<Produto> lista();
 
-    //public List<Produto> listarPorNome();
+    @Query("SELECT * FROM PRODUTOS ORDER BY PRODUTO")
+    public List<Produto> listarPorNome();
 
     @Query("SELECT * FROM PRODUTOS ORDER BY VALOR")
     public List<Produto> listarPorPreco();

@@ -83,6 +83,7 @@ public class ProdutoDAO {
             }
         };
         Collections.sort(tarefas, comparatorPreco);
+
         return new ArrayList<>(tarefas);
     }
 
