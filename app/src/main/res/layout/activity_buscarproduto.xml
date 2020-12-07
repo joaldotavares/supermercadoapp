@@ -23,6 +23,7 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="buscarPorCodigo"
         android:text="Buscar"
         tools:layout_editor_absoluteX="164dp"
         tools:layout_editor_absoluteY="184dp" />

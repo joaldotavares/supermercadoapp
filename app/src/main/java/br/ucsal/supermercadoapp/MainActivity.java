@@ -131,8 +131,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     public void clickBuscar(View view){
-        Intent intent = new Intent(this, BuscarProdutoActivity.class);
-        startActivity(intent);
+        Intent intent2 = new Intent(this, BuscarProdutoActivity.class);
+        startActivity(intent2);
     }
 
     @Override
