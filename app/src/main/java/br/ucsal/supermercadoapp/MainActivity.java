@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     //private ListView listView;
     private FloatingActionButton fba;
     private BottomNavigationView navigationView;
-
+    private Button btnBuscar;
     private ArrayAdapter<Produto> listAdapter;
 
     @Override
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         setTitle("Lista de compras");
 
         fba = findViewById(R.id.fba);
-
+        btnBuscar = findViewById(R.id.btnBuscar);
      /*   listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
         listView = findViewById(R.id.lista);
         listView.setAdapter(listAdapter);*/
@@ -127,6 +127,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     public void click(View view){
         Intent intent = new Intent(this, ProdutoActivity.class);
+        startActivity(intent);
+    }
+
+    public void clickBuscar(View view){
+        Intent intent = new Intent(this, BuscarProdutoActivity.class);
         startActivity(intent);
     }
 
